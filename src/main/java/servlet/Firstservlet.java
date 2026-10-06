@@ -6,7 +6,9 @@ import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebServlet;
 
+@WebServlet("/first")
 public class Firstservlet implements Servlet{
 
 	private ServletConfig servletconfig;
