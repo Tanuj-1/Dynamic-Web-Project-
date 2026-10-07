@@ -22,25 +22,34 @@ public class RequestServlet2 extends HttpServlet{
 		 
 		 var flag = false;
 		 
+		 StringBuilder content = new StringBuilder();
+		 
 		 if(cookies != null) {
+			 
 			 
 			 for(Cookie c: cookies) {
 				 String name = c.getName();
 				 if(name.equals("username")) 
 				 {
 					 System.out.println("username : " +c.getValue());
-					 writer.println("<h1>Welcome %s</h1>".formatted(c.getValue()));
+					 content.append("<h1>Welcome %s</h1>".formatted(c.getValue()));
 				     flag = true;
 				//	 break;
+				 }else if (name.equals("userid")) {
+					 System.out.println("username : " +c.getValue());
+					 content.append("<h1>Welcome %s</h1>".formatted(c.getValue()));
+				     flag = true;
 				 }
 			 }
 		 }
-		 if(!flag) {
-			 writer.println("<h1>No Username found in Cookies</h1>");
-			 writer.println("<h1> Username Cookie is not there in request </h1>");
+		 if(flag) {
+			 writer.println("<h1>User is present</h1>");
+			 writer.print(content);
 			 
 		 }
-	}
-	
-	
+		 else{
+			 writer.println("<h1>No Username found in Cookies</h1>");
+			 writer.println("<h1> Username Cookie is not there in request </h1>");		 
+		 }
+	}	
 }
